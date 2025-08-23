@@ -1,1 +1,0 @@
-# 5. Peça ao usuário uma letra e informe se é uma vogal ou consoante.

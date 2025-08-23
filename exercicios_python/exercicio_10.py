@@ -1,1 +1,0 @@
-# 10. Solicite ao usuário um número e informe se ele é múltiplo de 3 e de 5 ao

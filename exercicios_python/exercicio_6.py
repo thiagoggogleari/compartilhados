@@ -1,1 +1,0 @@
-# 6. Solicite três números ao usuário e exiba o menor deles.
