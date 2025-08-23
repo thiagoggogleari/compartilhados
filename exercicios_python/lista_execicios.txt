@@ -1,0 +1,19 @@
+1. Peça ao usuário um número e informe se ele é positivo, negativo ou zero.
+
+2. Solicite dois números ao usuário e exiba o maior deles.
+
+3. Peça ao usuário um número inteiro e informe se ele é par ou ímpar.
+
+4. Solicite a idade do usuário e informe se ele é maior de idade (18 anos ou mais) ou menor de idade.
+
+5. Peça ao usuário uma letra e informe se é uma vogal ou consoante.
+
+6. Solicite três números ao usuário e exiba o menor deles.
+
+7. Peça ao usuário um ano e informe se ele é bissexto.
+
+8. Solicite ao usuário duas notas e informe se ele foi aprovado (média maior ou igual a 6) ou reprovado.
+
+9. Peça ao usuário um número e informe se ele está entre 10 e 20 (inclusive).
+
+10. Solicite ao usuário um número e informe se ele é múltiplo de 3 e de 5 ao
