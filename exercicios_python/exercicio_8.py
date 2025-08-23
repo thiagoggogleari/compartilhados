@@ -1,0 +1,1 @@
+# 8. Solicite ao usuário duas notas e informe se ele foi aprovado (média maior ou igual a 6) ou reprovado.

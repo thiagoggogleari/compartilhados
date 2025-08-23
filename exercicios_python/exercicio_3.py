@@ -1,0 +1,1 @@
+# 3. Peça ao usuário um número inteiro e informe se ele é par ou ímpar.
