@@ -52,8 +52,14 @@ O bot criará e gerenciará os seguintes arquivos na pasta definida em `pasta_ar
 -   `logs_telegram.txt`: Registra todos os comandos que o bot recebe, incluindo timestamp, nome, ID do usuário e o texto da mensagem.
 
 ## Imagens
+**Tela usuário:**
 
-![admin](images/admin.jpeg)
-![admin1](images/admin1.jpeg)
-![user](images/user.jpeg)
 ![user1](images/user1.jpeg)
+
+![user](images/user.jpeg)
+
+
+**Tela admin:**
+![admin](images/admin.jpeg)
+
+![admin1](images/admin1.jpeg)
