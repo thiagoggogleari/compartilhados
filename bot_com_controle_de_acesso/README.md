@@ -60,6 +60,7 @@ O bot criará e gerenciará os seguintes arquivos na pasta definida em `pasta_ar
 
 
 **Tela admin:**
+
 ![admin](images/admin.jpg)
 
 ![admin1](images/admin1.jpg)
