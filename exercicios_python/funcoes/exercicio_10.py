@@ -1,0 +1,1 @@
+# Crie uma função que recebe um número e verifica se ele é um número primo.

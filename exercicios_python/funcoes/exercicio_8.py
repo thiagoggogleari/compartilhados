@@ -1,0 +1,1 @@
+# Crie uma função que recebe uma string e conta o número de vogais na string.

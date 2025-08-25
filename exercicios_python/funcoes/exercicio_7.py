@@ -1,0 +1,1 @@
+# Crie uma função que recebe uma lista de números e retorna a média dos números.

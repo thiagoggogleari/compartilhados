@@ -11,16 +11,16 @@ import datetime
 # Configuração inicial
 
 # 1 - Inserir token do bot.
-token_telegram_bot = "SEU_TOKEN_AQUI"  
+token_telegram_bot = "INSIRA SEU TOKEN AQUI"  
 bot_telebot = telebot.TeleBot(token_telegram_bot, parse_mode=None) 
 
 # 2 - Inserir o caminho para uma pasta que será utilizada para armazenar os usuários e logs. 
 # Pasta deve ter permissão de escrita e leitura
-pasta_arquivos = '/home/thiago/Documents/repos/jobs/'
+pasta_arquivos = './'
 
 # 3 - Atualizar o chat id do usuário. Caso não saiba, é possível colocar agora mesmo este código para rodar e enviar /minhaid para o bot que ele irá retornar o código.
 
-chatID_admin = 0000000000
+chatID_admin =  00000000
 
 # 4 - Após atualizar chatID_admin, reiniciar o código. Pronto.
 ###########################################################################################################
@@ -65,6 +65,8 @@ print("*"*25)
 # Verifica se o usuário está autorizado
 def consulta_usuario(id):
     print("Entrou na função 'consulta_usuario'")
+    if id == chatID_admin:
+        return True
     try:
         with open(path_autorizados, 'r') as file:
             linhas = file.readlines()          
@@ -175,30 +177,52 @@ def handle_registrar_command(message):
         bot_telebot.reply_to(message, emoji_caixa_correio + " A sua solicitação foi enviada.\n\nQuando o acesso for concedido, você será informado.")        
         usuario = message.from_user.first_name
         id_user = message.from_user.id
-        array_user = str(usuario) + "/" + str(id_user)
+        
+        # Criando callback data com prefixos para identificar a ação
+        callback_data_sim = f"aprovar/{usuario}/{id_user}"
+        callback_data_nao = f"rejeitar/{usuario}/{id_user}"
+        
         mensagem = message.text
 
         bot_telebot.send_message(chatID_admin, emoji_cadeado_chave + ' O usuário %s/%i gostaria de obter acesso ao bot.\n\nComando enviado:\n%s'%(usuario,id_user,mensagem))
         
+        # Adicionando botões SIM e NÃO
         keyboard = types.InlineKeyboardMarkup()
-        button = types.InlineKeyboardButton(text='SIM', callback_data=array_user)
-        keyboard.add(button)
+        button_sim = types.InlineKeyboardButton(text='SIM', callback_data=callback_data_sim)
+        button_nao = types.InlineKeyboardButton(text='NÃO', callback_data=callback_data_nao)
+        keyboard.add(button_sim, button_nao)
         bot_telebot.send_message(chat_id=chatID_admin, text='Autorizar o acesso?', reply_markup=keyboard)
     else:
-        bot_telebot.reply_to(message, "Você já possui acesso ao bot! \n¯\( ͡❛ ͜ʖ ͡❛)/¯")
+        bot_telebot.reply_to(message, "Você já possui acesso ao bot!)/¯")
 
 
 # Handler de callback do botão.
-# Ao ser acionado, registra o usuário em questão e manda uma mensagem para ele informando sua liberação de acesso.
+# Ao ser acionado, processa a decisão do admin (aprovar/negar).
 @bot_telebot.callback_query_handler(func=lambda call: True)
 def handle_button_press(call):
-    mensagem_format = call.data
+    # Extrai a ação e os dados do callback. Formato: "acao/nome/id"
+    try:
+        acao, nome_usuario, id_usuario = call.data.split('/')
+    except ValueError:
+        # Ignora callbacks que não correspondem ao formato esperado
+        return
 
-    if '/' in str(mensagem_format):
-        partes = mensagem_format.split('/')
+    if acao == "aprovar":
+        # Lógica para aprovar o usuário
+        partes = [nome_usuario, id_usuario]
         adiciona_novo_usuario(partes)
-        bot_telebot.send_message(chatID_admin, emoji_caixa_correio + ' Novo usuário cadastrado.\nEnviando mensagem de boas vindas!')
-        bot_telebot.send_message(str(partes[1]), emoji_cadeado_chave +" Acesso liberado!\nAgora o bot irá responder a seus comandos.")
+        bot_telebot.send_message(chatID_admin, emoji_ok + f' Usuário {nome_usuario} cadastrado.\nEnviando mensagem de boas vindas!')
+        bot_telebot.send_message(id_usuario, emoji_cadeado_aberto +" Acesso liberado!\nAgora o bot irá responder a seus comandos.")
+        # Edita a mensagem original para remover os botões e registrar a decisão
+        bot_telebot.edit_message_text(text=f"{emoji_ok} Acesso para {nome_usuario} foi APROVADO.", chat_id=call.message.chat.id, message_id=call.message.message_id)
+
+    elif acao == "rejeitar":
+        # Lógica para rejeitar o usuário
+        bot_telebot.send_message(id_usuario, emoji_x_vermelho + ' Usuário não autorizado!')
+        bot_telebot.send_message(chatID_admin, f'{emoji_x_vermelho} Acesso para o usuário {nome_usuario} foi negado.')
+        # Edita a mensagem original para remover os botões e registrar a decisão
+        bot_telebot.edit_message_text(text=f"{emoji_x_vermelho} Acesso para {nome_usuario} foi NEGADO.", chat_id=call.message.chat.id, message_id=call.message.message_id)
+
 
 # Esta linha mantém o bot ativo (loop_infinito)
 bot_telebot.infinity_polling()

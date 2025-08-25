@@ -1,0 +1,1 @@
+# Crie uma função que recebe um número e retorna o fatorial desse número.
