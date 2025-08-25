@@ -54,12 +54,12 @@ O bot criará e gerenciará os seguintes arquivos na pasta definida em `pasta_ar
 ## Imagens
 **Tela usuário:**
 
-![user1](images/user1.jpeg)
+![user1](images/user1.jpg)
 
-![user](images/user.jpeg)
+![user](images/user.jpg)
 
 
 **Tela admin:**
-![admin](images/admin.jpeg)
+![admin](images/admin.jpg)
 
-![admin1](images/admin1.jpeg)
+![admin1](images/admin1.jpg)
