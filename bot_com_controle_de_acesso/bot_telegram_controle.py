@@ -11,7 +11,7 @@ import datetime
 # Configuração inicial
 
 # 1 - Inserir token do bot.
-token_telegram_bot = "INSIRA SEU TOKEN AQUI"  
+token_telegram_bot = "SEU TOKEN AQUI"  
 bot_telebot = telebot.TeleBot(token_telegram_bot, parse_mode=None) 
 
 # 2 - Inserir o caminho para uma pasta que será utilizada para armazenar os usuários e logs. 
