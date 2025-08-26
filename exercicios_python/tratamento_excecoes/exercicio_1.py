@@ -8,9 +8,9 @@ def dividir(a, b):
     try: 
         res = a / b
     except(ZeroDivisionError):
-        print("Não é possível dividir por zero!")
-    pass
+        return "Não é possível dividir por zero!"
+    else:
+        return res 
 
-# Exemplo de uso
-dividir(10, 2)
-dividir(10, 0)
+print(dividir(10, 2))
+print(dividir(10, 0))
