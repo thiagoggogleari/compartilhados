@@ -5,7 +5,10 @@ Escreva uma função que divida dois números. Use um bloco try-except para lida
 """
 
 def dividir(a, b):
-    # Escreva seu código aqui
+    try: 
+        res = a / b
+    except(ZeroDivisionError):
+        print("Não é possível dividir por zero!")
     pass
 
 # Exemplo de uso
