@@ -1,7 +1,8 @@
 """
 Exercício 10: Combinando Tudo
 
-Escreva um programa que leia números de um arquivo chamado "numeros.txt", um por linha. O programa deve calcular a soma desses números.
+Escreva um programa que leia números de um arquivo chamado "numeros.txt", um por linha.
+O programa deve calcular a soma desses números.
 
 - Use um bloco `try-except` para lidar com `FileNotFoundError`.
 - Dentro do `try`, use outro `try-except` para lidar com `ValueError` caso uma linha não contenha um número válido.

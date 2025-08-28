@@ -1,15 +1,16 @@
 """
 Exercício 9: Exceções Personalizadas
 
-Crie sua própria exceção chamada `IdadeInvalidaError`. Escreva uma função que receba uma idade e lance `IdadeInvalidaError` se a idade for negativa ou maior que 120.
+Crie sua própria exceção chamada `IdadeInvalidaError`.
+Escreva uma função que receba uma idade e lance `IdadeInvalidaError` se a idade for negativa ou maior que 120.
 """
 
 class IdadeInvalidaError(Exception):
-    """Exceção lançada para idades inválidas."""
     pass
 
 def validar_idade(idade):
-    # Escreva seu código aqui
+    if idade < 0 or idade > 120:
+        raise IdadeInvalidaError ("IdadeInvalidaError")
     pass
 
 # Exemplo de uso
