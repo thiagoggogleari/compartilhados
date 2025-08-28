@@ -1,0 +1,10 @@
+1. Crie uma lista com 5 nomes de pessoas e exiba-os.
+2. Crie uma lista com 10 números inteiros e exiba a soma deles.
+3. Crie uma lista com 5 notas e exiba a média.
+4. Crie uma lista com 5 strings e exiba a mais longa.
+5. Crie uma lista com números de 1 a 10 e exiba apenas os pares.
+6. Crie uma lista com 5 elementos e remova o último.
+7. Crie uma lista com 5 elementos e adicione um novo no final.
+8. Crie uma lista com 5 elementos e insira um novo na segunda posição.
+9. Crie uma lista com 5 elementos e ordene-a em ordem crescente.
+10. Crie uma lista com 5 elementos e verifique se um elemento específico está presente.
