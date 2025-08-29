@@ -1,0 +1,1 @@
+# Itere sobre os valores de um dicionário e imprima-os.

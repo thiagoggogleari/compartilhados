@@ -1,0 +1,1 @@
+# Itere sobre os pares de chave-valor de um dicionário e imprima-os.

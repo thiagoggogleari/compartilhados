@@ -1,0 +1,1 @@
+# Remova um par de chave-valor de um dicionário.
