@@ -28,6 +28,7 @@ posts = [
     {'id': 1, 'titulo': 'Primeiro Post'},
 ]
 posts_ordenados = ordenar_posts_por_campo(posts, 'titulo')
+
 # O primeiro item em posts_ordenados deve ser o post com id 4.
 posts_ordenados_por_id = ordenar_posts_por_campo(posts, 'id')
 # O primeiro item em posts_ordenados_por_id deve ser o post com id 1.
@@ -37,4 +38,28 @@ posts_ordenados_por_id = ordenar_posts_por_campo(posts, 'id')
 para isso. Vale a pena pesquisar sobre `lambda` functions para usar com a `key`.
 """
 
-# Coloque sua solução abaixo
+def ordenar_posts_por_campo(posts,campo_a_ordenar):
+
+    # cria uma nova lista ordenada pela chave id
+    nova_lista = sorted(posts, key=lambda item: item[campo_a_ordenar])
+
+    return nova_lista
+
+posts = [
+    {'id': 2, 'titulo': 'Rascunho de Ideias'},
+    {'id': 4, 'titulo': 'Novidades da Semana'},
+    {'id': 1, 'titulo': 'Primeiro Post'},
+    ]
+
+
+posts_ordenados = ordenar_posts_por_campo(posts, 'id')
+
+print(posts_ordenados)
+
+
+
+
+
+
+
+

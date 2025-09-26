@@ -32,4 +32,16 @@ nova_lista = deletar_post(posts, 1)
 problema.
 """
 
-# Coloque sua solução abaixo
+posts = [
+    {'id': 1, 'titulo': 'Post para deletar', 'status': 'publicado'},
+    {'id': 2, 'titulo': 'Post para manter', 'status': 'rascunho'},
+]
+
+def deletar_post(posts,id):
+    # List comprehension, uma forma mais 
+    nova_lista = [ x for x in posts if x['id'] != id] 
+    return nova_lista
+
+nova_lista = deletar_post(posts, 1)
+
+print(nova_lista)

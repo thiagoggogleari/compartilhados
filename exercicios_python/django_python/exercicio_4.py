@@ -1,3 +1,6 @@
+# pylint: disable=unused-variable,comparison-to-True
+
+
 """
 Exercicio 4: Simulando a Atualização de um Objeto (`.save()`)
 
@@ -34,5 +37,42 @@ nova_lista = atualizar_post(posts, 1, dados)
 # {'id': 1, 'titulo': 'Título Arquivado', 'status': 'arquivado'}
 ```
 """
+import copy
 
-# Coloque sua solução abaixo
+posts = [
+    {'id': 1, 'titulo': 'Título Antigo', 'status': 'publicado'},
+    {'id': 2, 'titulo': 'Outro Post', 'status': 'rascunho'},
+]
+
+def atualizar_post(posts,id,dados):
+    id_encontrada = False
+    
+    # Procura se tem registro com a mesma id
+    for i in range(len(posts)):
+        if (posts[i]['id'] == id):
+            id_encontrada = True
+            break
+       
+    # Se id_encontrada = True então cria nova lista
+    if id_encontrada == True:
+        novo_posts = copy.deepcopy(posts)
+
+        # Alterar o registro com valores novos
+        for i in range(len(novo_posts)):
+            if(novo_posts[i]['id'] == id):
+                # Atribui os novos valores
+                novo_posts[i]['titulo']=dados['titulo']
+                novo_posts[i]['status']=dados['status']
+        return(novo_posts) 
+
+    # Se id_encontrada = False, retorna lista antiga
+    else:
+        return posts
+
+
+
+
+dados = {'status': 'arquivado', 'titulo': 'Título Arquivado'}
+nova_lista = atualizar_post(posts, 1, dados)
+
+print(nova_lista)
