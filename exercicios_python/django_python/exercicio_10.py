@@ -43,4 +43,42 @@ de autores em um dicionário onde as chaves são os `id`s dos autores. Isso
 evita percorrer a lista de autores para cada post.
 """
 
-# Coloque sua solução abaixo
+autores = [
+    {'id': 101, 'nome': 'Alice'},
+    {'id': 102, 'nome': 'Bob'},
+]
+
+posts = [
+    {'id': 1, 'titulo': 'Post de Alice', 'autor_id': 101},
+    {'id': 2, 'titulo': 'Outro post de Alice', 'autor_id': 101},
+    {'id': 3, 'titulo': 'Post do Bob', 'autor_id': 102},
+]
+
+
+def juntar_posts_com_autores(posts,autores):
+
+    nova_lista = []
+
+    # Percorre cada registro 'posts'
+    for i in range(len(posts)):
+        # Captura autor_id de 'posts' 
+        autor_id = posts[i]['autor_id']
+
+        # Busca registro do autor na tabela autores.
+        autor_atual = ''
+
+        for j in range(len(autores)):
+            if autores[j]['id'] == autor_id:
+                autor_atual = autores[j]
+
+        # Monta o novo registro de dicionário
+        reg_posts = posts[i]
+        reg_posts ['autor'] = autor_atual 
+
+        # Atribui a nova lista
+        nova_lista.append(reg_posts)
+    return nova_lista
+
+novo_dicionario = juntar_posts_com_autores(posts,autores)
+
+print(novo_dicionario)

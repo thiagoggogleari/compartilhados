@@ -33,4 +33,27 @@ posts_filtrados_2 = filtrar_posts_por_termo(posts, 'POST')
 aqui para garantir que a comparação não seja sensível a maiúsculas/minúsculas.
 """
 
-# Coloque sua solução abaixo
+posts = [
+    {'id': 1, 'titulo': 'Primeiro Post sobre Python'},
+    {'id': 2, 'titulo': 'Rascunho de Ideias em python'},
+    {'id': 3, 'titulo': 'Novidades da Semana'},
+]
+
+def filtrar_posts_por_termo(posts,termo):
+    termo = termo.lower()
+    nova_lista =[]
+
+    for i in range(len(posts)):
+        if termo in posts[i]['titulo'].lower() :
+            nova_lista.append(posts[i])
+
+    return nova_lista        
+
+
+# posts_filtrados deve conter os dois primeiros posts.
+posts_filtrados = filtrar_posts_por_termo(posts, 'python')
+print(posts_filtrados)
+
+# posts_filtrados_2 deve conter o primeiro post.
+posts_filtrados_2 = filtrar_posts_por_termo(posts, 'POST')
+print(posts_filtrados_2)

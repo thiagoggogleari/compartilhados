@@ -33,4 +33,24 @@ posts_populares = filtrar_posts_por_visualizacoes(posts, 1000)
 não deve ser considerado no filtro.
 """
 
-# Coloque sua solução abaixo
+posts = [
+    {'id': 1, 'titulo': 'Post Popular', 'visualizacoes': 1500},
+    {'id': 2, 'titulo': 'Post Novo', 'visualizacoes': 50},
+    {'id': 3, 'titulo': 'Post Viral', 'visualizacoes': 10000},
+]
+
+
+def filtrar_posts_por_visualizacoes(posts,min_visualizacoes,max_visualizacoes):
+    nova_lista = []
+    for i in range(len(posts)):
+        if posts[i]['visualizacoes'] > min_visualizacoes and posts[i]['visualizacoes'] < max_visualizacoes:
+            nova_lista.append(posts[i])
+    return nova_lista
+
+# Alterado para que o resultado fique entre mínimo e máximo
+# posts, min_visualizacoes, max_visualizacoes
+posts_populares = filtrar_posts_por_visualizacoes(posts, 1000,2000)
+
+print(posts_populares)
+
+
