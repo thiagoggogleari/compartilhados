@@ -36,4 +36,29 @@ resultado = buscar_posts_com_condicao_ou(posts, 'python', 'publicado')
 ```
 """
 
-# Coloque sua solução abaixo
+posts = [
+    {'titulo': 'Post sobre Python', 'status': 'rascunho'},
+    {'titulo': 'Novidades do Django', 'status': 'publicado'},
+    {'titulo': 'Outro rascunho', 'status': 'rascunho'},
+    {'titulo': 'Dicas de Python', 'status': 'arquivado'},
+    ]
+
+def buscar_posts_com_condicao_ou(posts,titulo,status):
+    nova_lista = []
+    # Laço percorrendo al ista 
+    for i in range(len(posts)):
+        # Converte as variáveis para minúsculas para atender o case-insensitive.
+        if titulo.lower() in posts[i]['titulo'].lower() or status.lower() in posts[i]['status']:
+            nova_lista.append(posts[i])
+    
+    return nova_lista
+
+
+res = buscar_posts_com_condicao_ou(posts,'python','publicado')
+print(res)
+
+
+
+
+
+

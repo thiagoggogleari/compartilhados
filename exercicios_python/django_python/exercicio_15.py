@@ -43,4 +43,35 @@ Para o exemplo acima, o resultado deve conter apenas o post com `id: 1`.
 operadores como `>`, `<`, `==`, etc.
 """
 
-# Coloque sua solução abaixo
+from datetime import datetime, timedelta
+
+posts = [
+    {
+        'id': 1, 
+        'data_publicacao': datetime(2023, 1, 1), 
+        'data_modificacao': datetime(2023, 1, 5)
+    },
+    {
+        'id': 2, 
+        'data_publicacao': datetime(2023, 2, 10), 
+        'data_modificacao': datetime(2023, 2, 10)
+    },
+    {
+        'id': 3, 
+        'data_publicacao': datetime(2023, 3, 15), 
+        'data_modificacao': datetime(2023, 3, 12) # Modificado ANTES
+    },
+]
+
+def encontrar_posts_modificados_apos_publicacao(posts):
+    nova_lista = []
+
+    # Percorre a lista fazendo a comparação
+    for i in range(len(posts)):
+        if posts[i]['data_modificacao'] > posts[i]['data_publicacao']:
+            nova_lista.append(posts[i])
+    
+    return nova_lista
+
+res = encontrar_posts_modificados_apos_publicacao(posts)
+print(res)

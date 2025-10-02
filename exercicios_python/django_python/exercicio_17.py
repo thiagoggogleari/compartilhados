@@ -37,5 +37,25 @@ existência de um item em uma lista (`if item in minha_lista`) pode ser lento.
 Converter a lista de `ids` para um `set` no início da sua função pode otimizar 
 a busca.
 """
+posts = [
+    {'id': 1, 'titulo': 'Post 1'},
+    {'id': 2, 'titulo': 'Post 2'},
+    {'id': 3, 'titulo': 'Post 3'},
+    {'id': 4, 'titulo': 'Post 4'},
+]
 
-# Coloque sua solução abaixo
+
+def filtrar_posts_por_lista_de_ids(posts,ids_desejados):
+    nova_lista = []
+    ids_desejados_set = set(ids_desejados)
+
+    for i in range(len(posts)):
+        if posts[i]['id'] in ids_desejados_set:
+            nova_lista.append(posts[i])
+
+    return nova_lista
+
+ids_desejados = [1, 3, 5] 
+posts_filtrados = filtrar_posts_por_lista_de_ids(posts, ids_desejados)
+
+print(posts_filtrados)

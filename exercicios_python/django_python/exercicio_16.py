@@ -42,4 +42,39 @@ titulos = listar_valores_de_campo(posts, 'titulo')
 destes problemas muito concisa e elegante.
 """
 
-# Coloque sua solução abaixo
+import copy
+
+posts = [
+    {'id': 1, 'titulo': 'Post 1', 'status': 'publicado'},
+    {'id': 2, 'titulo': 'Post 2', 'status': 'rascunho'},
+]
+
+# campos = ['id', 'status']
+def selecionar_campos(posts,campos):
+    # Cria um cópia do dicionário para não alterar os dados originais
+    copia_dict = copy.deepcopy(posts) 
+
+    # Percorre os posts do dicionario
+    for i in range(len(copia_dict)):
+        # Percorre as chaves do registro atual do dicionario
+        for chave in list(copia_dict[i].keys()):
+            # Se a chave não estiver na lista, ela é removida
+            if chave not in campos:
+                del copia_dict[i][chave]
+
+    # Retorna a nova lista 
+    return copia_dict
+
+
+def listar_valores_de_campo(posts,chave):
+    nova_lista = []
+    for i in range(len(posts)):
+        nova_lista.append(posts[i][chave])
+    return nova_lista
+    
+
+dicionarios_simplificados = selecionar_campos(posts, ['id', 'status'])
+print("Dicionários Simplificados:\n%s\n"%(dicionarios_simplificados))
+
+valores = listar_valores_de_campo(posts,'titulo')
+print("Valores por campo:\n%s\n"%(valores))
