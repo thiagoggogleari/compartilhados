@@ -2,7 +2,7 @@
 Exercicio 3: Simulando `git commit`
 
 Contexto Git/GitHub:
-O comando `git commit -m "Sua mensagem"` pega tudo que está na Staging Area e 
+O comando `git commit -m "Sua mpasensagem"` pega tudo que está na Staging Area e 
 cria um "snapshot" permanente (um commit) no seu histórico. Cada commit tem uma 
 mensagem que descreve as alterações.
 
@@ -35,7 +35,9 @@ meu_repo = git_commit(meu_repo, "Commit inicial", arquivos_atuais)
 # 'commits' deve ter 1 item, 'area_de_stage' deve estar vazia.
 ```
 """
+import copy 
 
+# Cria um dicionário que representa o repositório
 def git_init():
     base = {
             'arquivos': {},
@@ -44,24 +46,46 @@ def git_init():
             }
     return base
 
+# Adiciona arquivos na área de SET
 def git_add(repositorio, nome_arquivo):
     repositorio['area_de_stage'].add(nome_arquivo)
     return repositorio
 
 def git_commit(meu_repo, mensagem, arquivos):
-    print()
-    print(arquivos)
-    pass
+    print("\nCommit a ser inserido:")
+    novo_dicio = {}
+    novo_dicio['mensagem'] = mensagem
+    novo_dicio['arquivos_commitados'] = arquivos
+    print(novo_dicio)
+    meu_repo['commits'].append(novo_dicio)
+    print("\nEtapa de Commit em andamento:")
+    print(meu_repo)
+    print("\nTransferência da área de stage para arquivos do repositório")
+    meu_repo['arquivos'].update(arquivos)  
+    print(meu_repo)
+    print("\nApagando arquivos da área de stage")
+    meu_repo['area_de_stage'].clear()
+    print(meu_repo)
+#{'arquivos': {}, 'area_de_stage': {'leia_me.md', 'meu_codigo.py'}, 'commits': []}
+#    meu_repo['commits'].add(novo_dicio)
+    return meu_repo 
 
 meu_repo = git_init() # Função do exercício 1
 meu_repo = git_add(meu_repo, 'meu_codigo.py')
 meu_repo = git_add(meu_repo, 'leia_me.md')
+
+print("Repositório com arquivos na staging area:")
 print(meu_repo)
 
-meu_repo = git_commit(meu_repo, "Commit inicial", arquivos_atuais)
 
-#arquivos_atuais = {
-#    'meu_codigo.py': 'print("Olá Mundo")',
-#    'leia_me.md': '# Meu Projeto'
-#}
+# Agora, o dicionário de conteúdo corresponde aos arquivos na area_de_stage
+arquivos_para_commitar = {
+    'meu_codigo.py': 'print("Este é o meu código Python!")',
+    'leia_me.md': '# Título do Projeto\nEste é o arquivo LEIA-ME.'
+}
 
+# Fazendo o commit com a mensagem e os arquivos corretos
+meu_repo = git_commit(meu_repo, "Commit inicial com os primeiros arquivos", arquivos_para_commitar)
+
+print("\nRepositório final, após o commit:")
+print(meu_repo)

@@ -31,4 +31,3 @@ Commit: "Commit inicial"
 mais recente. Você precisará iterar sobre ela na ordem inversa.
 """
 
-# Coloque sua solução abaixo
